@@ -1,0 +1,40 @@
+html{
+    height:100%
+}
+body{
+    display:flex;
+    margin:0px;
+    padding:0px;
+    height:100%
+}
+img, embed, object, video{
+    max-width: 100%;
+}
+#sidebar{
+    width:10%;
+    padding-right:20px;
+    background-color: #004d40;
+}
+#cat-display{
+    width:90%;
+    text-align:center;
+    background:#39796b;
+    color:white;
+    min-height:100%;
+}
+.hidden{
+    display:none;
+}
+a{
+    font-size: 20px;
+    text-decoration: white;
+    text-emphasis-color: white;
+    color:white;
+
+}
+li{
+    list-style-type: none;
+    padding:0px;
+    list-style-position:inside;
+    margin:0px;
+}
