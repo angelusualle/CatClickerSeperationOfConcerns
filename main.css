@@ -34,3 +34,10 @@ li{
     color:white;
     cursor: pointer;
 }
+.outer-form{
+    width: 60%
+}
+
+div.form{
+    text-align: right;
+}

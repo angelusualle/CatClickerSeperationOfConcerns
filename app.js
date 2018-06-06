@@ -46,12 +46,21 @@ let octopus = {
                 return;
             }
         }
+    },
+    saveCat: function saveCat(cat, newCat){
+        cat.name = newCat.name;
+        cat.src = newCat.src;
+        cat.clicks = newCat.clicks;
+    },
+    reRenderNav: function reRenderNav(){
+        view.renderNav(model.cats);
     }
 }
 
 //View
 let view = {
     renderNav: function renderNav(cats) {
+        document.querySelector('#sidebar ul').innerHTML = '';
         const frag = document.createDocumentFragment();
         cats.forEach(c => {
             const li = document.createElement('li');
@@ -71,13 +80,35 @@ let view = {
         const div = document.createElement('div');
         div.innerHTML =
             `<h1>${cat.name}</h1>
-    <img alt="cat" src="${cat.src}">
-    <h1>Clicks:<span>${cat.clicks}</span></h1>`;
+            <img alt="cat" src="${cat.src}">
+            <h1>Clicks:<span>${cat.clicks}</span></h1>
+            <button id="admin">Admin</button>
+            <div class="outer-form hidden">
+                <div class="form">
+                    <label for="name">Name:</label><input type="text" id="name" value =${cat.name}><br>
+                    <label for="url">Picture URL:</label><input type="text" id="url" value="${cat.src}"><br>
+                    <label for="clicks">Clicks:</label><input type="text" id="clicks" value="${cat.clicks}"><br>
+                    <button id="submit">Submit</button>
+                </div>
+            </div>`;
         frag.appendChild(div);
         document.querySelector('#cat-display').appendChild(frag);
         document.querySelector('img').addEventListener('click', () => {
             octopus.incrementCatClick(cat);
             document.querySelector('span').innerText = cat.clicks;
+        });
+        document.querySelector('#admin').addEventListener('click', () => {
+            document.querySelector('.outer-form').classList.toggle('hidden');
+        });
+        document.querySelector('#submit').addEventListener('click', () => {
+            let newCat = {
+                name: document.querySelector('#name').value,
+                src: document.querySelector('#url').value,
+                clicks: Number(document.querySelector('#clicks').value)
+            }
+            octopus.saveCat(cat, newCat);
+            render(cat);
+            octopus.reRenderNav();
         });
     }
 }
