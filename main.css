@@ -25,16 +25,12 @@ img, embed, object, video{
 .hidden{
     display:none;
 }
-a{
-    font-size: 20px;
-    text-decoration: white;
-    text-emphasis-color: white;
-    color:white;
-
-}
 li{
     list-style-type: none;
     padding:0px;
     list-style-position:inside;
     margin:0px;
+    font-size: 20px;
+    color:white;
+    cursor: pointer;
 }
